@@ -33,7 +33,7 @@ void *handle;
 
 int write_png_init(void)
 {
-    handle = dlopen("/opt/homebrew/lib/libpng.dylib", RTLD_LAZY);
+    handle = dlopen(DLOPEN_LIBPNG, RTLD_LAZY);
     if (!handle) {
 	return -1;
     }
