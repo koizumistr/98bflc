@@ -24,18 +24,18 @@
 #define BETA_FI_SHORTRGB 0x1000
 
 struct betainfo_ {
-	char *path;
-	int pathlen;
+    char *path;
+    int pathlen;
 
-	unsigned int finfo;
+    unsigned int finfo;
 
-	unsigned char palette[3 * 16];
-	unsigned char *raw;
+    unsigned char palette[3 * 16];
+    unsigned char *raw;
 
-	unsigned char current_palette[4 * 16];
+    unsigned char current_palette[4 * 16];
 
-	int occurrence_calced;
-	int occurrence[16];
+    int occurrence_calced;
+    int occurrence[16];
 };
 typedef struct betainfo_ betainfo;
 
