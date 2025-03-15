@@ -19,6 +19,14 @@ int main(int argc, char **argv)
     }
 
     beta = bi_make(argv[1], strlen(argv[1]), &err);
+    if (beta == NULL) {
+	printf("err: %d\n", err);
+	return -1;
+    }
+    if (beta->finfo != BETA_FI_NONE) {
+	printf("finfo: %d err: %d\n", beta->finfo, err);
+    }
+
     write_png(strcat(argv[1], ".png"), beta->raw, beta->current_palette);
     bi_dispose(beta);
     printf("err: %d\n", err);
