@@ -4,8 +4,8 @@
 #include "raw.h"
 #include "beta.h"
 
-char *ext_list_u[] = {".R1", ".G1", ".B1", ".E1"};
-char *ext_list_l[] = {".r1", ".g1", ".b1", ".e1"};
+char *ext_list_u[] = {".R1", ".G1", ".B1", ".E1", ".RGB"};
+char *ext_list_l[] = {".r1", ".g1", ".b1", ".e1", ".rgb"};
 betainfo *bi_makeX(char *path, int pathlen, char **exts, int *err);
 
 betainfo *bi_make(char *path, int pathlen, int *err)
@@ -59,7 +59,7 @@ betainfo *bi_makeX(char *path, int pathlen, char **exts, int *err)
     }
     strncpy(rgb_n, path, pathlen);
     rgb_n[pathlen] = '\0';
-    strcat(rgb_n, ".RGB");
+    strcat(rgb_n, exts[4]);
 #ifdef DEBUG_98BFL
     printf("RGB: %s\n", rgb_n);
 #endif
