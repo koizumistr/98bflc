@@ -4,9 +4,21 @@
 #include "raw.h"
 #include "beta.h"
 
-char *ext_list[] = {".R1", ".G1", ".B1", ".E1"};
+char *ext_list_u[] = {".R1", ".G1", ".B1", ".E1"};
+char *ext_list_l[] = {".r1", ".g1", ".b1", ".e1"};
+betainfo *bi_makeX(char *path, int pathlen, char **exts, int *err);
 
 betainfo *bi_make(char *path, int pathlen, int *err)
+{
+    betainfo *result;
+
+    result = bi_makeX(path, pathlen, ext_list_u, err);
+    if (result == NULL)
+        result = bi_makeX(path, pathlen, ext_list_l, err);
+    return result;
+}
+
+betainfo *bi_makeX(char *path, int pathlen, char **exts, int *err)
 {
     int i, fr_res;
     betainfo *result;
@@ -60,7 +72,7 @@ betainfo *bi_make(char *path, int pathlen, int *err)
         }
         strncpy(w_fname[i], path, pathlen);
         w_fname[i][pathlen] = '\0';
-        strcat(w_fname[i], ext_list[i]);
+        strcat(w_fname[i], exts[i]);
 
 #ifdef DEBUG_98BFL
         printf("%d: %s\n", i, w_fname[i]);
